@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Ex09 : Display tab.{% endblock %}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            {% if people|length > 0 %}
+                <table class="table table-bordered table-hover table-dark table-striped" border="1px solid black">
+                    <thead class="justify-content-center">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Planet</th>
+                            <th scope="col">Climate</th>
+                        </tr>
+                    </thead>
+                    <tbody class="justify-content-center">
+                        {% for person in people %}
+                        <tr>
+                            <td>{{ person.name }}</td>
+                            <td>{{ person.planet }}</td>
+                            <td>{{ person.climate }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                No data available, please use the following command line before use : python manage.py loaddata ex09_initial_data.json
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

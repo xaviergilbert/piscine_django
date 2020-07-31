@@ -1,0 +1,18 @@
+{% if user.is_authenticated %}
+	Hello {{ user }} ({{ user.reputation.value }})
+{% elif user %}
+	Hello {{ default_user }}!
+{% endif %}
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+ 		<a class="navbar-brand" href="{% url 'ex00:acceuil' %}">Home</a> 
+ 		</div>
+		{% if user.is_authenticated %}
+			<a href="{% url 'ex00:logout' %}">logout</a> 
+		{% elif user %}
+			<a href="{% url 'ex00:inscription' %}">Inscription</a> |
+			<a href="{% url 'ex00:connexion' %}">Connexion</a> 
+		{% endif %}
+ 	</div>
+</nav>
